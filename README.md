@@ -70,7 +70,7 @@ $ ./trace lol.cz
 
 Note that the gateway 9 indicates communication administratively prohibited and gateway 7 hops away either don't send ICMP TIME_EXCEEDED message or sent message with a TTL too small to reach us. It indicates timeout what mean that program didn't receive response within 2 seconds. If the program obtains result in some kind of unreachable, trace will give up and exit.
 
-# OPTIONS
+# Options
 
 **-f**, **first_ttl** Specifies TTL used for the first packet. Implicit value is 1.  
 
@@ -78,18 +78,18 @@ Note that the gateway 9 indicates communication administratively prohibited and 
 
 **\<ip-address\>** IPv4/IPv6 destination address or domain name.  
 
-# FILES
+# Files
 
 [src/trace.cpp](https://github.com/ImooKascaak/trace/blob/master/src/trace.cpp)   
 [src/makefile](https://github.com/ImooKascaak/trace/blob/master/src/makefile)  
 README.md  
 
-# AUTHOR
+# Author
 
 Imrich Kascak  
 <xkascak1@mendelu.cz>  
 <ep1602@edu.hmu.gr>  
 
-# BUGS
+# Bugs
 
 Program ends by printing out error message on standard error output when some error occurs. Detail info about error guarantee function _perror()_.
