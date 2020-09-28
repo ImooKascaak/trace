@@ -80,15 +80,15 @@ Note that the gateway 9 indicates communication administratively prohibited and 
 
 # FILES
 
-src/trace.cpp  
-src/makefile  
+[src/trace.cpp](https://github.com/ImooKascaak/trace/blob/master/src/trace.cpp)   
+[src/makefile](https://github.com/ImooKascaak/trace/blob/master/src/makefile)  
 README.md  
 
 # AUTHOR
 
-Imrich Kascak
-<xkascak1@mendelu.cz>
-<ep1602@edu.hmu.gr>
+Imrich Kascak  
+<xkascak1@mendelu.cz>  
+<ep1602@edu.hmu.gr>  
 
 # BUGS
 
