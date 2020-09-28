@@ -1,7 +1,5 @@
 # trace - print the route packets trace to network host
 
----
-
 Version 1.0.0, June 2020
 
 ``
@@ -9,8 +7,6 @@ $ ./trace [OPTIONS] <ip-address>
 ``
 
 # Description
-
----
 
 Tracking route packets taken from an IP network on their way to a given host. Program works with UDP packets which are sent to the destination address with TTL value. Based on these packets program receive ICMP time exceeded messages. Parsing these messages program determine destination address eventually domain name of gateways all devices step by step until destination is unreachable. Based on ICMP message type and code next step is determined.
 
@@ -36,10 +32,10 @@ Program contains DNS extension. Script can be entered with IP address or domain 
 ``
 
 ### Anotations:  
-  **H!**  - host unreachable  
-  **N!** - network unreachable  
-  **P!** - protocol unreachable  
-  **X!** - communication administratively prohibited  
+**H!**  - host unreachable  
+**N!** - network unreachable  
+**P!** - protocol unreachable  
+**X!** - communication administratively prohibited  
 
 Otherwise sign '**\***' indicates timeout for certain TTL.  
 
@@ -73,8 +69,6 @@ Note that the gateway 9 indicates communication administratively prohibited and 
 
 # OPTIONS
 
----
-
 **-f**, **first_ttl** Specifies TTL used for the first packet. Implicit value is 1.  
 
 **-m**, **max_ttl** Specifies maximum TTL. Implicit value is 30.  
@@ -83,22 +77,16 @@ Note that the gateway 9 indicates communication administratively prohibited and 
 
 # FILES
 
----
-
 src/trace.cpp  
 src/makefile  
 README.md  
 
 # AUTHOR
 
----
-
 Imrich Kascak
 <xkascak1@mendelu.cz>
 <ep1602@edu.hmu.gr>
 
 # BUGS
-
----
 
 Program ends by printing out error message on standard error output when some error occurs. Detail info about error guarantee function _perror()_.
