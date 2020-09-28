@@ -1,19 +1,24 @@
-.TH TRACE 8
-.SH NAME
-\fBtrace\fR \-\- print the route packets trace to network host
-.SH SYNOPSIS
-.B trace
-[\fB\-f\fR \fIfirst_ttl\fR]
-[\fB\-m\fR \fImax_ttl\fR]
-.IR <ip-address>
-.SH DESCRIPTION
-Tracking the route packets taken from an IP network on their way to a given host. Program works with UDP packets which are sent to the destination address with TTL value. Based on these packets program receive ICMP time exceeded messages. Parsing these messages program determine destination address eventually domain name of gateways all devices step by step until destination is unreachable. Based on ICMP message type and code next step is determined.
+# trace - print the route packets trace to network host
 
-Principle of communication:
+---
 
-source                       destination
-  |      UPD packet with TTL      |
-  |------------------------------>|
+Version 1.0.0, June 2020
+
+``
+$ ./trace [OPTIONS] <ip-address>
+``
+
+# Description
+
+---
+
+Tracking route packets taken from an IP network on their way to a given host. Program works with UDP packets which are sent to the destination address with TTL value. Based on these packets program receive ICMP time exceeded messages. Parsing these messages program determine destination address eventually domain name of gateways all devices step by step until destination is unreachable. Based on ICMP message type and code next step is determined.
+
+### Principle of communication:
+
+source                       destination  
+  |      UPD packet with TTL      |  
+  |------------------------------>|  
   |                               |
   |                               |
   |waits                          |
@@ -26,15 +31,17 @@ source                       destination
 
 Program contains DNS extension. Script can be entered with IP address or domain name and for each router, the trace performs a reverse PTR query (attempting to obtain an IP address domain name). After send of UDP packet, program waits on socket up to 2 seconds. If the ICMP TIME_EXCEEDED message is received within 2 seconds then the next information are printed out in format:
 
-.B    <ttl-value>   <domain-name> (<ip-address>)    <transit-delay(ms)/anotation>
+``
+<ttl-value>   <domain-name> (<ip-address>)    <transit-delay(ms)/anotation>
+``
 
-Anotations:  
-  H!  host unreachable  
-  N!  network unreachable  
-  P!  protocol unreachable  
-  X!  communication administratively prohibited  
+### Anotations:  
+  **H!**  - host unreachable  
+  **N!** - network unreachable  
+  **P!** - protocol unreachable  
+  **X!** - communication administratively prohibited  
 
-Otherwise sign '*' indicating timeout is printed out for certain ttl.  
+Otherwise sign '**\***' indicates timeout for certain TTL.  
 
 A sample use and output might be successful:  
 
@@ -64,24 +71,34 @@ Or:
 
 Note that the gateway 9 indicates communication administratively prohibited and gateway 7 hops away either don't send ICMP TIME_EXCEEDED message or sent message with a TTL too small to reach us. It indicates timeout what mean that program didn't receive response within 2 seconds. If the program obtains result in some kind of unreachable, trace will give up and exit.
 
-.SH OPTIONS
-.TP
-.BR \-f " "\fIfirst_ttl\fR
-Specifies TTL used for the first packet. Implicit value is 1.
-.TP
-.BR \-m " "\fImax_ttl\fR
-Specifies maximum TTL. Implicit value is 30.
-.TP
-.BR \fI<ip-address>\fR
-IPv4/IPv6 destination address or domain name.
-.SH FILES
-  trace.cpp
-  trace.1
-  makefile
-.SH AUTHOR
-  Imrich Kascak
-  xkasca02@stud.fit.vutbr.cz
-.SH SEE ALSO
-traceroute(8), traceroute6(8)
-.SH BUGS
-Program ends printing out error message on standard error output when some error occurs. Detail info about error guarantee function perror().
+# OPTIONS
+
+---
+
+**-f**, **first_ttl** Specifies TTL used for the first packet. Implicit value is 1.  
+
+**-m**, **max_ttl** Specifies maximum TTL. Implicit value is 30.  
+
+**\<ip-address\>** IPv4/IPv6 destination address or domain name.  
+
+# FILES
+
+---
+
+src/trace.cpp  
+src/makefile  
+README.md  
+
+# AUTHOR
+
+---
+
+Imrich Kascak
+<xkascak1@mendelu.cz>
+<ep1602@edu.hmu.gr>
+
+# BUGS
+
+---
+
+Program ends by printing out error message on standard error output when some error occurs. Detail info about error guarantee function _perror()_.
