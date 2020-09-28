@@ -48,9 +48,9 @@ $ ./trace 172.217.23.238
 4	r98-bm.cesnet.cz (147.229.252.17)		0.63 ms  
 5	195.113.235.109 (195.113.235.109)		8.184 ms  
 6	r2-r93.cesnet.cz (195.113.157.70)		4.829 ms  
-7	108.170.245.49 (108.170.245.49)		4.788 ms  
+7	108.170.245.49 (108.170.245.49)		        4.788 ms  
 8	108.170.238.155 (108.170.238.155)		4.897 ms  
-9	prg03s06-in-f14.1e100.net (172.217.23.238)		4.76 ms  
+9	prg03s06-in-f14.1e100.net (172.217.23.238)	4.76 ms  
 </pre>
 
 Or:
@@ -61,11 +61,11 @@ $ ./trace lol.cz
 2	pe-ant.net.vutbr.cz (147.229.254.205)		0.933 ms  
 3	rt-ant.net.vutbr.cz (147.229.253.233)		0.128 ms  
 4	r98-bm.cesnet.cz (147.229.252.17)		0.647 ms  
-5	195.113.235.99 (195.113.235.99)		5.304 ms  
+5	195.113.235.99 (195.113.235.99)		        5.304 ms  
 6	nix-sitel.centronet.cz (91.210.16.7)		4.663 ms  
 7	*  
 8	217.195.167.222 (217.195.167.222)		4.699 ms  
-9	beta.web.pb.cz (109.72.0.11)		X!  
+9	beta.web.pb.cz (109.72.0.11)		        X!  
 </pre>
 
 Note that the gateway 9 indicates communication administratively prohibited and gateway 7 hops away either don't send ICMP TIME_EXCEEDED message or sent message with a TTL too small to reach us. It indicates timeout what mean that program didn't receive response within 2 seconds. If the program obtains result in some kind of unreachable, trace will give up and exit.
